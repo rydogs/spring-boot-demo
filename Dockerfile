@@ -1,7 +1,7 @@
-FROM adoptopenjdk/openjdk11 AS build
+FROM maven:3.8-openjdk-11-slim AS build
 COPY src src
 COPY pom.xml pom.xml
-RUN ./mvnw clean package
+RUN mvn clean package
 
 FROM adoptopenjdk/openjdk11
 ARG JAR_FILE=target/app.jar
