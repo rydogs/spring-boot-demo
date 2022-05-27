@@ -10,4 +10,4 @@ COPY --from=build ${JAR_FILE} app.jar
 COPY --from=build newrelic newrelic
 RUN curl https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic-agent.jar -O
 EXPOSE 8080
-ENTRYPOINT ["java", "$JAVA_OPTS", "-jar", "-javaagent:/newrelic/newrelic-agent.jar", "-Dnewrelic.config.file=/newrelic/newrelic.yaml", "/app.jar"]
+ENTRYPOINT ["java", "${JAVA_OPTS}", "-jar", "-javaagent:/newrelic/newrelic-agent.jar", "-Dnewrelic.config.file=/newrelic/newrelic.yaml", "/app.jar"]
