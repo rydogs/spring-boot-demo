@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam
 @Controller
 class TestController {
     @GetMapping("/hello")
-    fun hello(@RequestParam name: String): String {
+    fun hello(@RequestParam(name="name", required = false) name: String? = "stranger"): String {
         return "hello $name"
     }
 }
